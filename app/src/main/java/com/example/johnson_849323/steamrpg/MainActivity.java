@@ -1,6 +1,7 @@
 package com.example.johnson_849323.steamrpg;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MainActivity.this.startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
 

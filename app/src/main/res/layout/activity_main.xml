@@ -19,5 +19,5 @@
         android:id="@+id/imageView"
         android:layout_below="@+id/floor"
         android:layout_alignStart="@+id/floor"
-        android:src="@drawable/Tex_Dungeon_Floor_D43" />
+        android:src="@drawable/dungeon_back" />
 </RelativeLayout>
