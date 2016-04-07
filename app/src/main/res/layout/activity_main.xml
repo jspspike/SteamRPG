@@ -19,5 +19,70 @@
         android:id="@+id/imageView"
         android:layout_below="@+id/floor"
         android:layout_alignStart="@+id/floor"
-        android:src="@drawable/Tex_Dungeon_Floor_D43" />
+        android:src="@drawable/dungeon_back"
+        android:adjustViewBounds = "true"
+         />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/imageView2"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:background="#ff393939" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:text="Attack"
+        android:id="@+id/attack_button"
+        android:layout_below="@+id/imageView"
+        android:layout_toStartOf="@+id/timer_text"
+        android:layout_marginEnd="43dp"
+        android:layout_alignBottom="@+id/imageView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12:03:55"
+        android:id="@+id/timer"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/imageView2"
+        android:background="@drawable/rectangle3"
+        android:gravity="center"
+        android:padding="2px" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Auto \n Attack in:"
+        android:id="@+id/timer_text"
+        android:layout_alignBottom="@+id/attack_button"
+        android:layout_toStartOf="@+id/timer"
+        android:layout_below="@+id/imageView"
+        android:gravity="center"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:src="@drawable/avatar2"
+        android:layout_alignStart="@+id/avatarbar1"
+        android:layout_below="@+id/floor"
+        android:layout_alignEnd="@+id/avatarbar1"
+        android:adjustViewBounds = "true"
+        android:layout_marginTop="125dp" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:id="@+id/avatarbar1"
+        android:background="#ff000000"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp" />
+
 </RelativeLayout>
