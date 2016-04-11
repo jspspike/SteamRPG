@@ -85,4 +85,25 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="50dp" />
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:id="@+id/imageView4"
+        android:background="#ff000000"
+        android:layout_marginLeft="50dp"
+        android:layout_alignBottom="@+id/avatarbar1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView5"
+        android:src="@drawable/avatar2"
+        android:adjustViewBounds="true"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_alignEnd="@+id/imageView4"
+        android:layout_alignTop="@+id/imageView3"
+        android:layout_alignStart="@+id/imageView4" />
+
 </RelativeLayout>
