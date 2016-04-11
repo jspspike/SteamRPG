@@ -106,4 +106,31 @@
         android:layout_alignTop="@+id/imageView3"
         android:layout_alignStart="@+id/imageView4" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Health:"
+        android:id="@+id/Health"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentLeft="true"
+        android:padding="5dp"
+        android:textSize="20dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:progress="50"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignRight="@+id/timer"
+        android:layout_toRightOf="@+id/Health"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_alignBottom="@+id/Health"
+        android:progressDrawable="@drawable/custom_progressbar"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" />
+
+
 </RelativeLayout>
