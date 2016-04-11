@@ -17,6 +17,8 @@ public class LoginActivity extends Activity {
     public static final String WEBSITE = "SteamRPG";
 
 
+    String userID = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class LoginActivity extends Activity {
         webView.getSettings().setJavaScriptEnabled(true);
 
         webView.setWebViewClient(new WebViewClient() {
-            @Override
+        @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 setTitle(url);
                 Uri Url = Uri.parse(url);
@@ -36,10 +38,8 @@ public class LoginActivity extends Activity {
                     webView.stopLoading();
 
                     Uri userAccountUrl = Uri.parse(Url.getQueryParameter("openid.identity"));
-                    String userID = userAccountUrl.getLastPathSegment();
+                    userID = userAccountUrl.getLastPathSegment();
 
-                    TextView textView = (TextView) findViewById(R.id.textView);
-                    textView.setText(userID);
                 }
             }
         });
@@ -51,11 +51,12 @@ public class LoginActivity extends Activity {
                 "&openid.mode=checkid_setup" +
                 "&openid.ns=http://specs.openid.net/auth/2.0" +
                 "&openid.realm=https://" + WEBSITE +
-                "&openid.return_to=https://" + WEBSITE + "/signin/";
+                "&openid.return_to=https://" + WEBSITE + "";
 
         webView.loadUrl(url);
 
-
+        //            TextView textView = (TextView) findViewById(R.id.textView);
+//                    textView.setText(userID);
     }
 
 
