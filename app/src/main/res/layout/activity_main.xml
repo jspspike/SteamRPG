@@ -140,14 +140,13 @@
                 android:textSize="15dp"
                 android:gravity="center"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@id/progressBar" />
+                android:layout_toLeftOf="@+id/progressBar" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="200dp"
                 android:layout_height="33dp"
-                android:layout_alignParnetRight="true"
                 android:paddingBottom="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="15dp"
@@ -179,20 +178,19 @@
                 android:textSize="15dp"
                 android:gravity="center"
                 android:layout_below="@+id/health"
-                android:layout_toLeftOf="@id/progressBar2" />
+                android:layout_toLeftOf="@+id/progressBar2" />
 
             <ProgressBar
                 android:id="@+id/progressBar2"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="200dp"
                 android:layout_height="33dp"
-                android:layout_alignParnetRight="true"
                 android:paddingBottom="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
                 android:progress="76"
-                android:progressDrawable="@drawable/custom_progressbarG"
+                android:progressDrawable="@drawable/custom_progressbarg"
                 android:layout_below="@+id/health"
                 android:layout_alignParentEnd="true" />
 
@@ -217,20 +215,19 @@
                 android:textSize="15dp"
                 android:gravity="center"
                 android:layout_below="@+id/shooting"
-                android:layout_toLeftOf="@id/progressBar3" />
+                android:layout_toLeftOf="@+id/progressBar3" />
 
             <ProgressBar
                 android:id="@+id/progressBar3"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="200dp"
                 android:layout_height="33dp"
-                android:layout_alignParnetRight="true"
                 android:paddingBottom="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
                 android:progress="13"
-                android:progressDrawable="@drawable/custom_progressbarG"
+                android:progressDrawable="@drawable/custom_progressbarg"
                 android:layout_below="@+id/shooting"
                 android:layout_alignParentEnd="true" />
 
