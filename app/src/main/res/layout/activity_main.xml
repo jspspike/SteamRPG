@@ -1,23 +1,242 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/floor"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Floor 1 - Archery Tournament"
-        android:textSize="24dp"
-        android:id="@+id/floor"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:background="#ff32405d" />
+        android:layout_alignParentTop="true"
+        android:background="#ff32405d"
+        android:text="Floor 1 - Archery Tournament"
+        android:textSize="24dp" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_below="@+id/floor"
         android:layout_alignStart="@+id/floor"
-        android:src="@drawable/Tex_Dungeon_Floor_D43" />
+        android:layout_below="@+id/floor"
+        android:adjustViewBounds="true"
+        android:src="@drawable/dungeon_back" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView"
+        android:background="#ff393939" />
+
+    <Button
+        android:id="@+id/attack_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_below="@+id/imageView"
+        android:layout_marginEnd="43dp"
+        android:layout_toStartOf="@+id/timer_text"
+        android:text="Attack" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/imageView"
+        android:background="@drawable/rectangle3"
+        android:gravity="center"
+        android:padding="2px"
+        android:text="12:03:55"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/attack_button"
+        android:layout_below="@+id/imageView"
+        android:layout_toStartOf="@+id/timer"
+        android:gravity="center"
+        android:text="Auto \n Attack in:" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/avatarbar1"
+        android:layout_alignStart="@+id/avatarbar1"
+        android:layout_below="@+id/floor"
+        android:layout_marginTop="125dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/avatar2" />
+
+    <ImageView
+        android:id="@+id/avatarbar1"
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView3"
+        android:layout_marginLeft="50dp"
+        android:background="#ff000000" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:layout_alignBottom="@+id/avatarbar1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="50dp"
+        android:background="#ff000000" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_alignEnd="@+id/imageView4"
+        android:layout_alignStart="@+id/imageView4"
+        android:layout_alignTop="@+id/imageView3"
+        android:adjustViewBounds="true"
+        android:src="@drawable/avatar2" />
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageView2"
+        android:fillViewport="true">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:id="@+id/health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Health:"
+                android:textSize="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/healthFrac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingTop="7.5dp"
+                android:paddingBottom="7.5dp"
+                android:text="(50/100)"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@id/progressBar" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="200dp"
+                android:layout_height="33dp"
+                android:layout_alignParnetRight="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:progress="50"
+                android:progressDrawable="@drawable/custom_progressbar"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                />
+
+            <TextView
+                android:id="@+id/shooting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Shooting:"
+                android:textSize="20dp"
+                android:layout_below="@+id/health"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/shootingFrac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingTop="7.5dp"
+                android:paddingBottom="7.5dp"
+                android:text="1 (76/100)"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:layout_below="@+id/health"
+                android:layout_toLeftOf="@id/progressBar2" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="200dp"
+                android:layout_height="33dp"
+                android:layout_alignParnetRight="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:progress="76"
+                android:progressDrawable="@drawable/custom_progressbarG"
+                android:layout_below="@+id/health"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/driving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Driving:"
+                android:textSize="20dp"
+                android:layout_below="@+id/shooting"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/drvingingFrac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingTop="7.5dp"
+                android:paddingBottom="7.5dp"
+                android:text="2 (13/100)"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:layout_below="@+id/shooting"
+                android:layout_toLeftOf="@id/progressBar3" />
+
+            <ProgressBar
+                android:id="@+id/progressBar3"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="200dp"
+                android:layout_height="33dp"
+                android:layout_alignParnetRight="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:progress="13"
+                android:progressDrawable="@drawable/custom_progressbarG"
+                android:layout_below="@+id/shooting"
+                android:layout_alignParentEnd="true" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
 </RelativeLayout>
