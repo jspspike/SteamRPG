@@ -13,7 +13,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MainActivity.this.startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
     }
 
 
@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+    
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -1,14 +1,17 @@
 package com.example.johnson_849323.steamrpg;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class LoginActivity extends Activity {
@@ -40,6 +43,11 @@ public class LoginActivity extends Activity {
                     Uri userAccountUrl = Uri.parse(Url.getQueryParameter("openid.identity"));
                     userID = userAccountUrl.getLastPathSegment();
 
+                    Toast.makeText(LoginActivity.this, userID,Toast.LENGTH_LONG).show();
+                    Log.i("UserID", userID);
+
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra(getString(R.string.player_id), userID);
                 }
             }
         });
@@ -54,6 +62,9 @@ public class LoginActivity extends Activity {
                 "&openid.return_to=https://" + WEBSITE + "";
 
         webView.loadUrl(url);
+
+
+
 
         //            TextView textView = (TextView) findViewById(R.id.textView);
 //                    textView.setText(userID);
