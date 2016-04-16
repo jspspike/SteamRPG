@@ -4,7 +4,8 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:onClick="tap">
 
     <TextView
         android:id="@+id/floor"
@@ -17,7 +18,7 @@
         android:textSize="24dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/background"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/floor"
@@ -30,7 +31,7 @@
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/background"
         android:background="#ff393939" />
 
     <Button
@@ -39,10 +40,11 @@
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_alignBottom="@+id/imageView2"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/background"
         android:layout_marginEnd="43dp"
         android:layout_toStartOf="@+id/timer_text"
-        android:text="Attack" />
+        android:text="Attack"
+        android:onClick="attack" />
 
     <TextView
         android:id="@+id/timer"
@@ -50,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView2"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/background"
         android:background="@drawable/rectangle3"
         android:gravity="center"
         android:padding="2px"
@@ -62,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/attack_button"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/background"
         android:layout_toStartOf="@+id/timer"
         android:gravity="center"
         android:text="Auto \n Attack in:" />
@@ -98,7 +100,7 @@
         android:background="#ff000000" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/avatar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView3"
@@ -107,6 +109,21 @@
         android:layout_alignTop="@+id/imageView3"
         android:adjustViewBounds="true"
         android:src="@drawable/target" />
+
+    <ProgressBar
+        android:id="@+id/enemy_health"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:progress="50"
+        android:progressDrawable="@drawable/custom_progressbar"
+        android:layout_height="10dp"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/avatar2"
+        android:layout_alignStart="@+id/avatar2"
+        android:layout_alignEnd="@+id/avatar2" />
 
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -209,7 +226,7 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
-                android:id="@+id/drvingingFrac"
+                android:id="@+id/drivingFrac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
