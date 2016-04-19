@@ -1,6 +1,5 @@
 package com.example.johnson_849323.steamrpg;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -27,8 +26,7 @@ import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 
-
-public class MainActivity extends ActionBarActivity {
+public class shooting extends ActionBarActivity {
 
     Enemy enemy;
     Player player = new Player();
@@ -62,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.shooting);
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -102,12 +100,11 @@ public class MainActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Toast.makeText(MainActivity.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
                 if(position == 0){
-                    Toast.makeText(MainActivity.this, "0", Toast.LENGTH_SHORT).show();
-                    shooting();
+                    Toast.makeText(shooting.this, "0", Toast.LENGTH_SHORT).show();
+                    home();
                 }
-
                 if(position == 1){
-                    Toast.makeText(MainActivity.this, "1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(shooting.this, "1", Toast.LENGTH_SHORT).show();
                     shooting();
                 }
             }
