@@ -1,5 +1,6 @@
 package com.example.johnson_849323.steamrpg;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -25,7 +26,7 @@ import com.google.android.gms.ads.AdView;
 import java.util.ArrayList;
 
 
-public class MainActivity extends Activity{
+public class MainActivity extends ActionBarActivity {
 
     Enemy enemy;
     Player player = new Player();
@@ -74,8 +75,6 @@ public class MainActivity extends Activity{
         mProgress2 = (ProgressBar) findViewById(R.id.enemy_health);
         mProgress2.setMax(enemy.getHealth());
 
-
-
         update();
 
         mDrawerList = (ListView)findViewById(R.id.navList);
@@ -85,8 +84,8 @@ public class MainActivity extends Activity{
         addDrawerItems();
         setupDrawer();
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     private void addDrawerItems() {
@@ -108,14 +107,14 @@ public class MainActivity extends Activity{
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                //getSupportActionBar().setTitle("Navigation!");
+                getSupportActionBar().setTitle("Navigation!");
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                //getSupportActionBar().setTitle(mActivityTitle);
+                getSupportActionBar().setTitle(mActivityTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };

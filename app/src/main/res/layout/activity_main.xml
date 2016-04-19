@@ -396,6 +396,6 @@
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="left|start"
-        android:background="#ffeeeeee"/>
+        android:background="#000000"/>
 
 </android.support.v4.widget.DrawerLayout>
