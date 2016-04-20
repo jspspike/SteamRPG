@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -56,6 +57,7 @@ public class MainActivity extends ActionBarActivity {
     public Context c;
 
     ArrayList<Enemy> enemies = new ArrayList();
+    SharedPreferences sharedPref;
 
 
 
@@ -67,6 +69,14 @@ public class MainActivity extends ActionBarActivity {
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        Context context = MainActivity.this;
+        sharedPref = context.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
+        int defaultValue = 100;
+        shooting = sharedPref.getInt(getString(R.string.shooting_saved), defaultValue);
+
+
 
         mDrawerList = (ListView)findViewById(R.id.navList);
 
@@ -91,8 +101,14 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
+    private void levelCommit(){
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(getString(R.string.shooting_saved), shooting);
+        editor.commit();
+    }
+
     private void addDrawerItems() {
-        String[] osArray = { "Home", "Shooting", "Windows", "OS X", "Linux" };
+        String[] osArray = { "Home", "Shooting", "Driving", "Strategy", "Survival" };
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
         mDrawerList.setAdapter(mAdapter);
 
@@ -121,6 +137,7 @@ public class MainActivity extends ActionBarActivity {
     public void shooting(){
         Intent intent = new Intent(this , shooting.class);
         startActivity(intent);
+        levelCommit();
     }
 
     private void setupDrawer() {
