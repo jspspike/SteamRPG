@@ -53,6 +53,7 @@ public class shooting extends ActionBarActivity {
     public int survival = 222;
     public int puzzle = 73;
     public Context c;
+    private int[] levels = new int[5];
 
     ArrayList<Enemy> enemies = new ArrayList();
 
@@ -66,6 +67,15 @@ public class shooting extends ActionBarActivity {
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        levels = getIntent().getIntArrayExtra("levels");
+
+        shooting = levels[0];
+        driving = levels[1];
+        strategy = levels[2];
+        survival = levels[3];
+        puzzle = levels[4];
+
 
         mDrawerList = (ListView)findViewById(R.id.navList);
 
@@ -112,7 +122,14 @@ public class shooting extends ActionBarActivity {
         });
     }
     public void home(){
+        levels[0] = shooting;
+        levels[1] = driving;
+        levels[2] = strategy;
+        levels[3] = survival;
+        levels[4] = puzzle;
+
         Intent intent = new Intent(this , MainActivity.class);
+        intent.putExtra("levels",levels);
         startActivity(intent);
     }
 
