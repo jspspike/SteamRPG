@@ -7,6 +7,9 @@ public class Enemy {
 
     int damage;
     int health;
+    String src;
+    String skill;
+    String back;
 
     public Enemy(){
         damage = 10;
@@ -16,11 +19,34 @@ public class Enemy {
     public Enemy(int h, int d){
         health = h;
         damage = d;
+        src = "golbin";
+        back = "dungeon_back";
+        skill = "shooting";
+
+    }
+
+    public Enemy(int h, int d, String s, String sk){
+        health = h;
+        damage = d;
+        src = s;
+        skill = sk;
+    }
+
+    public Enemy(int h, int d, String s, String b,String sk){
+        health = h;
+        damage = d;
+        src = s;
+        back = b;
+        skill = sk;
     }
 
     public String getSkill(){
-        return "shooting";
+        return skill;
     }
+
+    public String getSrc(){return src;}
+
+    public String getBack(){return back;}
 
     public int getHealth(){
         return health;

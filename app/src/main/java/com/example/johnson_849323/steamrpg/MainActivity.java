@@ -83,9 +83,6 @@ public class MainActivity extends ActionBarActivity {
         levels[3] = survival;
         levels[4] = puzzle;
 
-        System.out.println("Intent is:");
-        System.out.println(getIntent().hasCategory("android.intent.category.LAUNCHER"));
-
         if(!getIntent().hasCategory("android.intent.category.LAUNCHER")) {
             levels = getIntent().getIntArrayExtra("levels");
 
@@ -100,6 +97,8 @@ public class MainActivity extends ActionBarActivity {
 
         enemies.add(new Enemy(50,12));
         enemies.add(new Enemy(75,24));
+        enemies.add(new Enemy(75,24,"skellington","shooting" ));
+        enemies.add(new Enemy(150,20,"chess","board","strategy" ));
 
         enemy = enemies.get(0);
 
@@ -275,9 +274,22 @@ public class MainActivity extends ActionBarActivity {
         TextView floor = (TextView) findViewById(R.id.floor);
         floor.setText("Floor 2 - Race");
 
+        int range = (enemies.size());
+        enemy = enemies.get((int)(Math.random() * range));
+
         mProgress2 = (ProgressBar) findViewById(R.id.enemy_health);
         mProgress2.setProgress(mProgress2.getMax());
-        enemy = enemies.get(1);
+
+        int resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable",this.getPackageName());
+        ImageView enemypic = (ImageView) findViewById(R.id.avatar2);
+        enemypic.setImageResource(resourceID);
+
+        int resourceBID = this.getResources().getIdentifier(enemy.getBack(), "drawable",this.getPackageName());
+        ImageView backimg = (ImageView) findViewById(R.id.background);
+        backimg.setImageResource(resourceBID);
+
+
+
         update();
 
 
@@ -353,6 +365,7 @@ public class MainActivity extends ActionBarActivity {
         switch(sk){
             case "shooting": return (shooting * .01);
             case "driving": return (driving * .01);
+            case "": return 1;
         }
         return 1;
 
