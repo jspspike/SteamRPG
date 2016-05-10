@@ -10,6 +10,9 @@ public class Enemy {
     String src;
     String skill;
     String back;
+    int xp = 100;
+    int midpoint = 60;
+    int range = 2;
 
     public Enemy(){
         damage = 10;
@@ -39,6 +42,10 @@ public class Enemy {
         back = b;
         skill = sk;
     }
+
+    public void setXp(int x){xp = x;}
+
+    public int getXp(){return xp;}
 
     public String getSkill(){
         return skill;

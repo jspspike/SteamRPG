@@ -197,10 +197,6 @@ public class shooting extends ActionBarActivity {
             return true;
         }
 
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
