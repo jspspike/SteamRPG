@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -64,10 +63,6 @@ public class LoginActivity extends Activity {
         webView.loadUrl(url);
 
 
-
-
-        //            TextView textView = (TextView) findViewById(R.id.textView);
-//                    textView.setText(userID);
     }
 
 

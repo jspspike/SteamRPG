@@ -7,5 +7,6 @@
     <string name="banner_ad_unit_id">ca-app-pub-4387136140393462/8986112639</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="player_id">PLAYER_ID</string>
+    <string name="title_activity_lobby">LobbyActivity</string>
 
 </resources>

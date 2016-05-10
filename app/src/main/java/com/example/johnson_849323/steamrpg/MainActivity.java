@@ -29,6 +29,13 @@ public class MainActivity extends Activity {
         return true;
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (intent.getStringExtra("PLAYER_ID").equals("")) {
+
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
