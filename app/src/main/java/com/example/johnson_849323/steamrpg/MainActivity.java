@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
     public int driving = 254;
     public int strategy = 342;
     public int survival = 222;
-    public int puzzle = 73;
+    public int fantasyC = 73;
     public int floorNum = 1;
     public int days = 0;
     public Context c;
@@ -92,7 +92,7 @@ public class MainActivity extends ActionBarActivity {
         levels[1] = driving;
         levels[2] = strategy;
         levels[3] = survival;
-        levels[4] = puzzle;
+        levels[4] = fantasyC;
 
         if (!getIntent().hasCategory("android.intent.category.LAUNCHER")) {
             levels = getIntent().getIntArrayExtra("levels");
@@ -101,7 +101,7 @@ public class MainActivity extends ActionBarActivity {
             driving = levels[1];
             strategy = levels[2];
             survival = levels[3];
-            puzzle = levels[4];
+            fantasyC = levels[4];
         }
 
         mDrawerList = (ListView) findViewById(R.id.navList);
@@ -193,7 +193,7 @@ public class MainActivity extends ActionBarActivity {
         levels[1] = driving;
         levels[2] = strategy;
         levels[3] = survival;
-        levels[4] = puzzle;
+        levels[4] = fantasyC;
 
         Intent intent = new Intent(this, shooting.class);
         intent.putExtra("levels", levels);
@@ -532,10 +532,10 @@ public class MainActivity extends ActionBarActivity {
         surF.setText((int) (survival / 100) + " (" + (survival % 100) + "/100)");
 
         mProgress7 = (ProgressBar) findViewById(R.id.progressBar6);
-        mProgress7.setProgress(puzzle % 100);
+        mProgress7.setProgress(fantasyC % 100);
 
         TextView puzF = (TextView) findViewById(R.id.puzzleFrac);
-        puzF.setText((int) (puzzle / 100) + " (" + (puzzle % 100) + "/100)");
+        puzF.setText((int) (fantasyC / 100) + " (" + (fantasyC % 100) + "/100)");
 
     }
 
@@ -550,7 +550,7 @@ public class MainActivity extends ActionBarActivity {
             case "survival":
                 return (survival * .01);
             case "puzzle":
-                return (puzzle * .01);
+                return (fantasyC * .01);
             case "":
                 return 1;
         }
