@@ -9,34 +9,33 @@
     android:onClick="tap">
 
     <TextView
-        android:id="@+id/floorR"
+        android:id="@+id/floorS"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#ff32405d"
-        android:text="Floor 0 - Race"
+        android:text="Floor 0 - Island"
         android:textSize="24dp" />
 
     <ImageView
         android:id="@+id/background"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/floorR"
-        android:layout_below="@+id/floorR"
+        android:layout_alignStart="@+id/floorS"
+        android:layout_below="@+id/floorS"
         android:adjustViewBounds="true"
-        android:src="@drawable/track" />
+        android:src="@drawable/island" />
 
     <ImageView
+
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/avatarbar1"
-        android:layout_alignStart="@+id/avatarbar1"
-        android:layout_below="@+id/floorR"
-        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/avatar2" />
+        android:src="@drawable/avatar2"
+        android:layout_alignBottom="@+id/background"
+        android:layout_alignEnd="@+id/timer" />
 
     <ImageView
         android:id="@+id/avatarbar1"
@@ -47,75 +46,36 @@
         android:layout_marginLeft="50dp"
         android:background="#ff000000" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="100dp"
-        android:layout_height="3dp"
-        android:layout_alignBottom="@+id/avatarbar1"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="25dp"
-        android:layout_marginLeft="50dp"
-        android:background="#ff000000" />
-
-    <ImageView
-        android:id="@+id/avatar2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView3"
-        android:layout_alignEnd="@+id/imageView4"
-        android:layout_alignStart="@+id/imageView4"
-        android:layout_alignTop="@+id/imageView3"
-        android:adjustViewBounds="true"
-        android:src="@drawable/target" />
-
     <TextView
-        android:id="@+id/enemy_time_t"
-        android:text="55:21"
-        android:paddingBottom="0dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:paddingTop="0dp"
-        android:gravity="center"
-        android:layout_height="20dp"
-        android:layout_width="match_parent"
-        android:layout_above="@+id/avatar2"
-        android:layout_alignStart="@+id/avatar2"
-        android:layout_alignEnd="@+id/avatar2"
-        android:textSize="15dp"
-        android:padding="0dp"
-        android:textIsSelectable="false" />
-
-    <TextView
-        android:id="@+id/player_time"
+        android:id="@+id/days"
         style="?android:attr/progressBarStyleHorizontal"
-        android:text="62:39"
+        android:text="Days till rescue: 10"
         android:paddingBottom="0dp"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:paddingTop="0dp"
         android:gravity="center"
-        android:layout_height="20dp"
+        android:layout_height="35dp"
         android:layout_width="match_parent"
-        android:layout_above="@+id/avatar2"
-        android:layout_alignStart="@+id/imageView3"
-        android:layout_alignEnd="@+id/imageView3"
-        android:textSize="15dp"
+        android:textSize="30dp"
         android:padding="0dp"
-        android:textIsSelectable="false" />
+        android:textIsSelectable="false"
+        android:layout_below="@+id/floorS"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:text="You are challenged to a race."
+        android:text="You are trapped on an island and must wait for Res-Q"
         android:id="@+id/text"
-        android:layout_alignBottom="@+id/background"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/roundcorner"
         android:padding="5dp"
-        android:textSize="30dp"
-        android:layout_margin="5dp" />
+        android:textSize="24dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/imageView3"
+        android:textColor="#000000" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -134,8 +94,8 @@
         android:layout_below="@+id/background"
         android:layout_marginEnd="43dp"
         android:layout_toStartOf="@+id/timer_text"
-        android:text="RACE!"
-        android:onClick="race" />
+        android:text="SURVIVE!?!"
+        android:onClick="survive" />
 
     <TextView
         android:id="@+id/timer"
@@ -166,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/avatarbar1"
         android:layout_alignStart="@+id/avatarbar1"
-        android:layout_below="@+id/floorR"
+        android:layout_below="@+id/floorS"
         android:layout_marginTop="125dp"
         android:adjustViewBounds="true"
         />

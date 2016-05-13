@@ -7,6 +7,7 @@ public class Enemy {
 
     int damage;
     int health;
+    int healthMax;
     String src;
     String skill;
     String back;
@@ -21,6 +22,7 @@ public class Enemy {
 
     public Enemy(int h, int d){
         health = h;
+        healthMax = h;
         damage = d;
         src = "golbin";
         back = "dungeon_back";
@@ -30,6 +32,7 @@ public class Enemy {
 
     public Enemy(int h, int d, String s, String sk){
         health = h;
+        healthMax = h;
         damage = d;
         src = s;
         skill = sk;
@@ -37,6 +40,7 @@ public class Enemy {
 
     public Enemy(int h, int d, String s, String b,String sk){
         health = h;
+        healthMax = h;
         damage = d;
         src = s;
         back = b;
@@ -66,4 +70,6 @@ public class Enemy {
     public int getDamage(){
         return damage;
     }
+
+    public void reset(){health = healthMax;}
 }
