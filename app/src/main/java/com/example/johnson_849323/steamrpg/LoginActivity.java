@@ -1,7 +1,9 @@
 package com.example.johnson_849323.steamrpg;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,7 +48,11 @@ public class LoginActivity extends Activity {
                     Log.i("UserID", userID);
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra(getString(R.string.player_id), userID);
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    editor.putInt("played_id", Integer.parseInt(userID));
                     startActivity(intent);
                 }
             }

@@ -1,7 +1,9 @@
 package com.example.johnson_849323.steamrpg;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,12 @@ public class MainActivity extends Activity {
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
+
+        if (sharedPreferences.getInt("player_id", -2) != -2) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
 
         TextView floor = (TextView) findViewById(R.id.floor);
         Intent intent = getIntent();
