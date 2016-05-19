@@ -9,23 +9,23 @@
     android:onClick="tap">
 
     <TextView
-        android:id="@+id/floorR"
+        android:id="@+id/floorSt"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#ff32405d"
-        android:text="Floor 0 - Race"
+        android:text="Floor 1 - Archery Tournament"
         android:textSize="24dp" />
 
     <ImageView
         android:id="@+id/background"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/floorR"
-        android:layout_below="@+id/floorR"
+        android:layout_alignStart="@+id/floorSt"
+        android:layout_below="@+id/floorSt"
         android:adjustViewBounds="true"
-        android:src="@drawable/track" />
+        android:src="@drawable/board" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/avatarbar1"
         android:layout_alignStart="@+id/avatarbar1"
-        android:layout_below="@+id/floorR"
+        android:layout_below="@+id/floorSt"
         android:layout_marginTop="50dp"
         android:adjustViewBounds="true"
         android:src="@drawable/avatar2" />
@@ -66,47 +66,27 @@
         android:layout_alignStart="@+id/imageView4"
         android:layout_alignTop="@+id/imageView3"
         android:adjustViewBounds="true"
-        android:src="@drawable/race_car" />
+        android:src="@drawable/target" />
 
-    <TextView
-        android:id="@+id/enemy_time_t"
-        android:text="55:21"
+    <ProgressBar
+        android:id="@+id/enemy_health"
+        style="?android:attr/progressBarStyleHorizontal"
         android:paddingBottom="0dp"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:paddingTop="0dp"
-        android:gravity="center"
-        android:layout_height="20dp"
+        android:progress="50"
+        android:progressDrawable="@drawable/custom_progressbar"
+        android:layout_height="10dp"
         android:layout_width="match_parent"
         android:layout_above="@+id/avatar2"
         android:layout_alignStart="@+id/avatar2"
-        android:layout_alignEnd="@+id/avatar2"
-        android:textSize="15dp"
-        android:padding="0dp"
-        android:textIsSelectable="false" />
-
-    <TextView
-        android:id="@+id/player_time"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:text="62:39"
-        android:paddingBottom="0dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:paddingTop="0dp"
-        android:gravity="center"
-        android:layout_height="20dp"
-        android:layout_width="match_parent"
-        android:layout_above="@+id/avatar2"
-        android:layout_alignStart="@+id/imageView3"
-        android:layout_alignEnd="@+id/imageView3"
-        android:textSize="15dp"
-        android:padding="0dp"
-        android:textIsSelectable="false" />
+        android:layout_alignEnd="@+id/avatar2" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:text="You are challenged to a race."
+        android:text="You are challenged to a game of chess"
         android:id="@+id/text"
         android:layout_alignBottom="@+id/background"
         android:layout_alignParentStart="true"
@@ -126,7 +106,7 @@
         android:background="#ff393939" />
 
     <Button
-        android:id="@+id/race_button"
+        android:id="@+id/attack_button"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
@@ -134,8 +114,8 @@
         android:layout_below="@+id/background"
         android:layout_marginEnd="43dp"
         android:layout_toStartOf="@+id/timer_text"
-        android:text="RACE!"
-        android:onClick="race" />
+        android:text="Attack"
+        android:onClick="attack" />
 
     <TextView
         android:id="@+id/timer"
@@ -166,7 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/avatarbar1"
         android:layout_alignStart="@+id/avatarbar1"
-        android:layout_below="@+id/floorR"
+        android:layout_below="@+id/floorSt"
         android:layout_marginTop="125dp"
         android:adjustViewBounds="true"
         />

@@ -67,9 +67,15 @@ public class MainActivity extends ActionBarActivity {
     public double enemyLapT = 0;
     public int floorType = 0;
     public int rando = 0;
+    int range;
+    int resourceID;
+    ImageView enemypic;
+    int resourceBID;
+    ImageView backimg;
     DecimalFormat df = new DecimalFormat();
 
     ArrayList<Enemy> enemies = new ArrayList();
+    ArrayList<Enemy> shootingE = new ArrayList();
     SharedPreferences sharedPref;
 
 
@@ -112,6 +118,16 @@ public class MainActivity extends ActionBarActivity {
         enemies.add(new Enemy(100, 5, "chess", "board", "strategy"));
 
         enemy = enemies.get(0);
+
+        shootingE.add(new Enemy(50, 15, "armygrunt", "csgo", "shooting"));
+        shootingE.add(new Enemy(100, 8, "DustCT", "csgo", "shooting"));
+        shootingE.add(new Enemy(85, 10, "nukeCT", "csgo", "shooting"));
+        shootingE.add(new Enemy(25, 25, "infernoT", "csgo", "shooting"));
+        shootingE.add(new Enemy(125, 5, "cacheT", "csgo", "shooting"));
+        shootingE.add(new Enemy(105, 9, "nuke2CT", "csgo", "shooting"));
+
+        enemy = shootingE.get(0);
+
 
         mProgress2 = (ProgressBar) findViewById(R.id.enemy_health);
         mProgress2.setMax(enemy.getHealth());
@@ -306,9 +322,9 @@ public class MainActivity extends ActionBarActivity {
 
         System.out.println("NextFlooring!");
 
-        rando = randomWithRange(0, 2);
+        rando = randomWithRange(0, 3);
         while(rando == floorType){
-            rando = randomWithRange(0, 2);
+            rando = randomWithRange(0, 3);
         }
 
         switch (rando) {
@@ -316,24 +332,24 @@ public class MainActivity extends ActionBarActivity {
                 floorType = 0;
                 vf.setDisplayedChild(0);
                 TextView floor = (TextView) findViewById(R.id.floor);
-                floor.setText("Floor " + floorNum + " - Ranged Combat");
+                floor.setText("Floor " + floorNum + " - Shooting");
 
-                int range = (enemies.size());
-                enemy = enemies.get((int) (Math.random() * range));
+                range = (shootingE.size());
+                enemy = shootingE.get((int) (Math.random() * range));
 
                 mProgress2 = (ProgressBar) findViewById(R.id.enemy_health);
                 mProgress2.setMax(enemy.getHealth());
                 mProgress2.setProgress(enemy.getHealth());
 
-                int resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable", this.getPackageName());
-                ImageView enemypic = (ImageView) findViewById(R.id.avatar2);
+                resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable", this.getPackageName());
+                enemypic = (ImageView) findViewById(R.id.avatar2);
                 enemypic.setImageResource(resourceID);
 
                 System.out.println("print statement: " + this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName()));
                 System.out.println("print worked");
 
-                int resourceBID = this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName());
-                ImageView backimg = (ImageView) findViewById(R.id.background);
+                resourceBID = this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName());
+                backimg = (ImageView) findViewById(R.id.background);
                 backimg.setImageResource(resourceBID);
 
                 update();
@@ -359,6 +375,61 @@ public class MainActivity extends ActionBarActivity {
                 daysT.setText("Days till rescue " + days);
                 break;
 
+            case 3:
+                floorType = 0;
+                vf.setDisplayedChild(3);
+                TextView floorSt = (TextView) findViewById(R.id.floorSt);
+                floorSt.setText("Floor " + floorNum + " - Strategy");
+
+                range = (enemies.size());
+                enemy = enemies.get((int) (Math.random() * range));
+
+                mProgress2 = (ProgressBar) findViewById(R.id.enemy_health);
+                mProgress2.setMax(enemy.getHealth());
+                mProgress2.setProgress(enemy.getHealth());
+
+                resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable", this.getPackageName());
+                enemypic = (ImageView) findViewById(R.id.avatar2);
+                enemypic.setImageResource(resourceID);
+
+                System.out.println("print statement: " + this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName()));
+                System.out.println("print worked");
+
+                resourceBID = this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName());
+                backimg = (ImageView) findViewById(R.id.background);
+                backimg.setImageResource(resourceBID);
+
+                update();
+
+                break;
+
+            case 4:
+                floorType = 0;
+                vf.setDisplayedChild(0);
+                TextView floorF = (TextView) findViewById(R.id.floorF);
+                floorF.setText("Floor " + floorNum + " - Fantasy Combat");
+
+                range = (enemies.size());
+                enemy = enemies.get((int) (Math.random() * range));
+
+                mProgress2 = (ProgressBar) findViewById(R.id.enemy_health);
+                mProgress2.setMax(enemy.getHealth());
+                mProgress2.setProgress(enemy.getHealth());
+
+                resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable", this.getPackageName());
+                enemypic = (ImageView) findViewById(R.id.avatar2);
+                enemypic.setImageResource(resourceID);
+
+                System.out.println("print statement: " + this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName()));
+                System.out.println("print worked");
+
+                resourceBID = this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName());
+                backimg = (ImageView) findViewById(R.id.background);
+                backimg.setImageResource(resourceBID);
+
+                update();
+
+                break;
         }
     }
 

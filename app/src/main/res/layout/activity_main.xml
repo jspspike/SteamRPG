@@ -40,6 +40,8 @@
         <include android:id="@+id/dungeon" layout="@layout/lobby" />
         <include android:id="@+id/race" layout="@layout/race" />
         <include android:id="@+id/survive" layout="@layout/survive" />
+        <include android:id="@+id/strat" layout="@layout/strat" />
+        <include android:id="@+id/fantasy" layout="@layout/fantasy" />
 
     </ViewFlipper>
 
@@ -249,7 +251,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="Fantasy Combat:"
+                android:text="Fantasy:"
                 android:textSize="20dp"
                 android:layout_below="@+id/survival"
                 android:layout_alignParentStart="true" />
