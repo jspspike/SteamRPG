@@ -14,7 +14,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-
 public class LoginActivity extends Activity {
 
 
@@ -52,7 +51,7 @@ public class LoginActivity extends Activity {
                     SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                    editor.putInt("played_id", Integer.parseInt(userID));
+                    editor.putString("played_id", userID);
                     startActivity(intent);
                 }
             }

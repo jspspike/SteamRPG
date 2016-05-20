@@ -13,6 +13,12 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
 
 public class MainActivity extends Activity {
 
@@ -25,10 +31,22 @@ public class MainActivity extends Activity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
+
+
         SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
 
-        if (sharedPreferences.getInt("player_id", -2) != -2) {
+        if (!sharedPreferences.getString("player_id", "-2").equals("-2")) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
+
+        try {
+            SteamHours.getUserHours(730, sharedPreferences.getInt("player_id", -2));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
         }
 
         TextView floor = (TextView) findViewById(R.id.floor);
