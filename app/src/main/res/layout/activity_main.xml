@@ -40,7 +40,7 @@
         <include android:id="@+id/dungeon" layout="@layout/lobby" />
         <include android:id="@+id/race" layout="@layout/race" />
         <include android:id="@+id/survive" layout="@layout/survive" />
-        <include android:id="@+id/strat" layout="@layout/strat" />
+        <include android:id="@+id/strategy" layout="@layout/strategy" />
         <include android:id="@+id/fantasy" layout="@layout/fantasy" />
 
     </ViewFlipper>

@@ -54,13 +54,24 @@ public class MainActivity extends ActionBarActivity {
     private ProgressBar mProgress6;
     private ProgressBar mProgress7;
 
-    public int shooting = 500;
-    public int driving = 254;
-    public int strategy = 342;
-    public int survival = 222;
-    public int fantasyC = 73;
-    public int floorNum = 1;
+    public int shooting;
+    public int shootTap = 476;
+    public int shootHour;
+    public int driving;
+    public int driveTap = 254;
+    public int driveHour;
+    public int strategy;
+    public int stratTap = 342;
+    public int stratHour;
+    public int survival;
+    public int surTap = 222;
+    public int surHour;
+    public int fantasyC;
+    public int fantTap = 73;
+    public int fantHour;
+    public int floorNum = 0;
     public int days = 0;
+    public int waves = 0;
     public Context c;
     private int[] levels = new int[5];
     public double playerLapT = 0;
@@ -76,6 +87,7 @@ public class MainActivity extends ActionBarActivity {
 
     ArrayList<Enemy> enemies = new ArrayList();
     ArrayList<Enemy> shootingE = new ArrayList();
+    ArrayList<Enemy> raceCars = new ArrayList();
     SharedPreferences sharedPref;
 
 
@@ -112,19 +124,19 @@ public class MainActivity extends ActionBarActivity {
 
         mDrawerList = (ListView) findViewById(R.id.navList);
 
-        enemies.add(new Enemy(50, 5, "golbin", "dungeon_back", "shooting"));
-        enemies.add(new Enemy(100, 8, "target", "csgo", "shooting"));
-        enemies.add(new Enemy(75, 8, "skellington", "dungeon_back", "shooting"));
-        enemies.add(new Enemy(100, 5, "chess", "board", "strategy"));
+        enemies.add(new Enemy(50, 5, "golbin", "dungeon_back", "fantasyC"));
+        //enemies.add(new Enemy(100, 8, "target", "csgo", "fantasyC"));
+        enemies.add(new Enemy(75, 8, "skellington", "dungeon_back", "fantasyC"));
+        enemies.add(new Enemy(65, 5, "chess", "board", "fantasyC"));
 
         enemy = enemies.get(0);
 
-        shootingE.add(new Enemy(50, 15, "armygrunt", "csgo", "shooting"));
-        shootingE.add(new Enemy(100, 8, "DustCT", "csgo", "shooting"));
-        shootingE.add(new Enemy(85, 10, "nukeCT", "csgo", "shooting"));
-        shootingE.add(new Enemy(25, 25, "infernoT", "csgo", "shooting"));
-        shootingE.add(new Enemy(125, 5, "cacheT", "csgo", "shooting"));
-        shootingE.add(new Enemy(105, 9, "nuke2CT", "csgo", "shooting"));
+        shootingE.add(new Enemy(50, 3, "armygrunt", "csgo", "shooting"));
+        shootingE.add(new Enemy(100, 8, "dustct", "csgo", "shooting"));
+        shootingE.add(new Enemy(85, 5, "nukect", "csgo", "shooting"));
+        shootingE.add(new Enemy(25, 6, "infernot", "csgo", "shooting"));
+        shootingE.add(new Enemy(125, 5, "cachet", "csgo", "shooting"));
+        shootingE.add(new Enemy(105, 3, "dust2", "csgo", "shooting"));
 
         enemy = shootingE.get(0);
 
@@ -166,6 +178,7 @@ public class MainActivity extends ActionBarActivity {
 
         df.setMaximumFractionDigits(2);
 
+        nextFloor();
 
     }
 
@@ -322,9 +335,9 @@ public class MainActivity extends ActionBarActivity {
 
         System.out.println("NextFlooring!");
 
-        rando = randomWithRange(0, 3);
+        rando = randomWithRange(0, 4);
         while(rando == floorType){
-            rando = randomWithRange(0, 3);
+            rando = randomWithRange(0, 4);
         }
 
         switch (rando) {
@@ -359,6 +372,14 @@ public class MainActivity extends ActionBarActivity {
             case 1:
                 floorType = 1;
                 vf.setDisplayedChild(1);
+                /*
+                ImageView race = (ImageView) findViewById(R.id.avatar2);
+                switch (randomWithRange(0, 1)) {
+                    case 0:
+                        race.set
+
+                }
+                */
 
                 TextView floorR = (TextView) findViewById(R.id.floorR);
                 floorR.setText("Floor " + floorNum + " - Race Track");
@@ -376,37 +397,20 @@ public class MainActivity extends ActionBarActivity {
                 break;
 
             case 3:
-                floorType = 0;
+                floorType = 3;
                 vf.setDisplayedChild(3);
                 TextView floorSt = (TextView) findViewById(R.id.floorSt);
                 floorSt.setText("Floor " + floorNum + " - Strategy");
 
-                range = (enemies.size());
-                enemy = enemies.get((int) (Math.random() * range));
-
-                mProgress2 = (ProgressBar) findViewById(R.id.enemy_health);
-                mProgress2.setMax(enemy.getHealth());
-                mProgress2.setProgress(enemy.getHealth());
-
-                resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable", this.getPackageName());
-                enemypic = (ImageView) findViewById(R.id.avatar2);
-                enemypic.setImageResource(resourceID);
-
-                System.out.println("print statement: " + this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName()));
-                System.out.println("print worked");
-
-                resourceBID = this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName());
-                backimg = (ImageView) findViewById(R.id.background);
-                backimg.setImageResource(resourceBID);
-
-                update();
-
+                waves = 4;
+                TextView waveT = (TextView) findViewById(R.id.waves);
+                waveT.setText("Waves left: " + waves);
                 break;
 
             case 4:
-                floorType = 0;
+                floorType = 4;
                 vf.setDisplayedChild(0);
-                TextView floorF = (TextView) findViewById(R.id.floorF);
+                TextView floorF = (TextView) findViewById(R.id.floor);
                 floorF.setText("Floor " + floorNum + " - Fantasy Combat");
 
                 range = (enemies.size());
@@ -461,10 +465,42 @@ public class MainActivity extends ActionBarActivity {
         healthT.setText("(" + player.getHealth() + "/100)");
 
         days--;
-        TextView daysT = (TextView) findViewById(R.id.days);
-        daysT.setText("Days till rescue " + days);
+        TextView waveT = (TextView) findViewById(R.id.days);
+        waveT.setText("Days till rescue " + days);
 
         if(days < 1){
+            nextFloor();
+        }
+
+    }
+
+    public void wave(View view){
+
+        player.setHealth(player.getHealth() - (int) (enemy.getDamage() / skillMod(enemy.getSkill())));
+
+        if (player.getHealth() < 1) {
+            new AlertDialog.Builder(this)
+                    .setTitle("You Died")
+                    .setMessage("Get good scrub")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            reset();
+                        }
+                    })
+                    .show();
+        }
+
+        mProgress = (ProgressBar) findViewById(R.id.progressBar);
+        mProgress.setProgress(player.getHealth());
+
+        TextView healthT = (TextView) findViewById(R.id.healthFrac);
+        healthT.setText("(" + player.getHealth() + "/100)");
+
+        waves--;
+        TextView waveT = (TextView) findViewById(R.id.waves);
+        waveT.setText("Waves left: " + waves);
+
+        if(waves < 1){
             nextFloor();
         }
 
@@ -556,6 +592,8 @@ public class MainActivity extends ActionBarActivity {
 
         resetFloor();
         update();
+        floorNum = 0;
+        nextFloor();
     }
 
     public void resetFloor() {
@@ -568,6 +606,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void update() {
+
+        shooting = shootTap + shootHour;
+        driving = driveTap + driveHour;
+        strategy = stratTap + stratHour;
+        survival = surTap + surHour;
+        fantasyC = fantTap + fantHour;
 
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
         mProgress.setProgress(player.getHealth());
@@ -599,7 +643,7 @@ public class MainActivity extends ActionBarActivity {
         mProgress6 = (ProgressBar) findViewById(R.id.progressBar5);
         mProgress6.setProgress(survival % 100);
 
-        TextView surF = (TextView) findViewById(R.id.strategyFrac);
+        TextView surF = (TextView) findViewById(R.id.survivalFrac);
         surF.setText((int) (survival / 100) + " (" + (survival % 100) + "/100)");
 
         mProgress7 = (ProgressBar) findViewById(R.id.progressBar6);
@@ -630,7 +674,24 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tap(View view) {
-        shooting++;
+        System.out.println("" + floorType);
+        switch(floorType) {
+            case 0:
+                shootTap++;
+                break;
+            case 1:
+                driveTap++;
+                break;
+            case 2:
+                surTap++;
+                break;
+            case 3:
+                stratTap++;
+                break;
+            case 4:
+                fantTap++;
+                break;
+        }
         update();
     }
 

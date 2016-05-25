@@ -15,7 +15,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#ff32405d"
-        android:text="Floor 1 - Archery Tournament"
+        android:text="Floor 1 - Sick Shooting"
         android:textSize="24dp" />
 
     <ImageView
