@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.google.android.gms.ads.AdView;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -37,17 +39,17 @@ public class MainActivity extends Activity {
 
         if (!sharedPreferences.getString("player_id", "-2").equals("-2")) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            Log.e("PlayerID", sharedPreferences.getString("player_id", "-2"));
         }
 
-        try {
-            SteamHours.getUserHours(730, sharedPreferences.getInt("player_id", -2));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
+        ArrayList<String> ids = new ArrayList<>();
+
+        ids.add("730");
+        ids.add("76561198065211626");
+
+
+        SteamTask hours = new SteamTask();
+        hours.execute(ids);
 
         TextView floor = (TextView) findViewById(R.id.floor);
         Intent intent = getIntent();
@@ -78,6 +80,7 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.login) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
             return true;
         }
 
