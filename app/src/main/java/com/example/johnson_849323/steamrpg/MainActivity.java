@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +30,8 @@ import com.google.android.gms.ads.AdView;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
+
+import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -97,6 +100,13 @@ public class MainActivity extends ActionBarActivity {
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
+
+        if (sharedPreferences.getString("player_id", "-2").equals("-2")) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            Log.e("PlayerID", sharedPreferences.getString("player_id", "-2"));
+        }
 
         Context context = MainActivity.this;
         sharedPref = context.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -284,9 +294,9 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.login) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
             return true;
         }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -553,7 +563,6 @@ public class MainActivity extends ActionBarActivity {
         TextView pTime = (TextView) findViewById(R.id.player_time);
         /*
         double range = (Math.pow(Math.E, 2 * (driving / 100)) + Math.pow(Math.E, 2 * (driving / 100))) + 1;
-
         playerLapT = ((60 - Math.log(1 + (driving / 100)) + ((Math.random() * range) - Math.pow(Math.E, driving / 100))));
         pTime.setText("" + df.format(playerLapT));
          */

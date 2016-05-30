@@ -9,6 +9,8 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="preference_file_key">Levels</string>
     <string name="shooting_saved">1</string>
-
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="player_id">PLAYER_ID</string>
+    <string name="title_activity_lobby">LobbyActivity</string>
 
 </resources>
