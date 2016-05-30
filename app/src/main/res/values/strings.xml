@@ -4,11 +4,9 @@
     <string name="app_name">SteamRPG</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
     <string name="banner_ad_unit_id">ca-app-pub-4387136140393462/8986112639</string>
-=======
     <string name="title_activity_login">LoginActivity</string>
     <string name="player_id">PLAYER_ID</string>
->>>>>>> 56aaf2f724605356df14da20f87133657bd10f61
+    <string name="title_activity_lobby">LobbyActivity</string>
 
 </resources>

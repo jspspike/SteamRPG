@@ -1,7 +1,9 @@
 package com.example.johnson_849323.steamrpg;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,9 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 import android.widget.Toast;
-
 
 public class LoginActivity extends Activity {
 
@@ -47,7 +47,13 @@ public class LoginActivity extends Activity {
                     Log.i("UserID", userID);
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra(getString(R.string.player_id), userID);
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    editor.putString("player_id", userID);
+                    editor.commit();
+                    startActivity(intent);
                 }
             }
         });
@@ -64,10 +70,6 @@ public class LoginActivity extends Activity {
         webView.loadUrl(url);
 
 
-
-
-        //            TextView textView = (TextView) findViewById(R.id.textView);
-//                    textView.setText(userID);
     }
 
 
@@ -86,10 +88,6 @@ public class LoginActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 }
