@@ -88,7 +88,6 @@ public class MainActivity extends ActionBarActivity {
 
     ArrayList<Enemy> enemies = new ArrayList();
     ArrayList<Enemy> shootingE = new ArrayList();
-    ArrayList<Enemy> raceCars = new ArrayList();
     SharedPreferences sharedPref;
 
 
@@ -108,6 +107,23 @@ public class MainActivity extends ActionBarActivity {
             Log.e("PlayerID", sharedPreferences.getString("player_id", "-2"));
         }
 
+        if (sharedPreferences.getInt("startShooting", -1) == -1) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            try {
+                SteamHours.updateData(sharedPreferences.getString("player_id", "-2"));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            editor.putInt("startShooting", SteamHours.getShootingHours());
+            editor.putInt("startDriving", SteamHours.getDrivingHours());
+            editor.putInt("startStrat", SteamHours.getStrategyHours());
+            editor.putInt("startSurvival", SteamHours.getSurvivalHours());
+            editor.putInt("startFantasy", SteamHours.getFanasyHours());
+            editor.commit();
+        }
+
         Context context = MainActivity.this;
         sharedPref = context.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
@@ -122,12 +138,17 @@ public class MainActivity extends ActionBarActivity {
 
         if (!getIntent().hasCategory("android.intent.category.LAUNCHER")) {
             levels = getIntent().getIntArrayExtra("levels");
+            try {
+                shooting = levels[0];
+                driving = levels[1];
+                strategy = levels[2];
+                survival = levels[3];
+                fantasyC = levels[4];
+            }
 
-            shooting = levels[0];
-            driving = levels[1];
-            strategy = levels[2];
-            survival = levels[3];
-            fantasyC = levels[4];
+            catch (NullPointerException n){
+                n.printStackTrace();
+            }
         }
 
         mDrawerList = (ListView) findViewById(R.id.navList);
@@ -294,6 +315,12 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.login) {
+
+            SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.commit();
+
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             return true;
         }
@@ -625,11 +652,28 @@ public class MainActivity extends ActionBarActivity {
 
     public void update() {
 
-        shooting = shootTap + shootHour;
-        driving = driveTap + driveHour;
-        strategy = stratTap + stratHour;
-        survival = surTap + surHour;
-        fantasyC = fantTap + fantHour;
+
+        SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
+
+        try {
+            SteamHours.updateData(sharedPreferences.getString("player_id", "-2"));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(sharedPreferences.getInt("startShooting", -1));
+        System.out.println(sharedPreferences.getInt("startDriving", -1));
+        System.out.println(sharedPreferences.getInt("startStrat", -1));
+        System.out.println(sharedPreferences.getInt("startSurvival", -1));
+        System.out.println(sharedPreferences.getInt("startFantasy", -1));
+
+        shooting = shootTap + (SteamHours.getShootingHours() - sharedPreferences.getInt("startShooting", -1)) ;
+        driving = driveTap + (SteamHours.getShootingHours() - sharedPreferences.getInt("startDriving", -1));
+        strategy = stratTap + (SteamHours.getShootingHours() - sharedPreferences.getInt("startStrat", -1));
+        survival = surTap + (SteamHours.getShootingHours() - sharedPreferences.getInt("startSurvival", -1));
+        fantasyC = fantTap + (SteamHours.getShootingHours() - sharedPreferences.getInt("startFantasy", -1));
 
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
         mProgress.setProgress(player.getHealth());

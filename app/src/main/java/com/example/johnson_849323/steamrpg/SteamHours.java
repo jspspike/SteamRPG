@@ -43,7 +43,7 @@ public class SteamHours {
             for (int j = 0; j < gameId.size(); j++) {
                 if (shootingGames[i] == gameId.get(j)) {
                     sum += gameHours.get(j);
-                    System.out.println("Hours" + gameHours.get(j));
+//                    System.out.println("Hours" + gameHours.get(j));
                 }
             }
         }
