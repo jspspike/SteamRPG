@@ -51,7 +51,8 @@ public class LoginActivity extends Activity {
                     SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                    editor.putString("played_id", userID);
+                    editor.putString("player_id", userID);
+                    editor.commit();
                     startActivity(intent);
                 }
             }

@@ -9,17 +9,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import org.xml.sax.SAXException;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.xml.parsers.ParserConfigurationException;
+import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends Activity {
@@ -37,23 +33,25 @@ public class MainActivity extends Activity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("special", Context.MODE_PRIVATE);
 
-        if (!sharedPreferences.getString("player_id", "-2").equals("-2")) {
+        if (sharedPreferences.getString("player_id", "-2").equals("-2")) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             Log.e("PlayerID", sharedPreferences.getString("player_id", "-2"));
         }
 
-        ArrayList<String> ids = new ArrayList<>();
-
-        ids.add("730");
-        ids.add("76561198065211626");
-
-
-        SteamTask hours = new SteamTask();
-        hours.execute(ids);
-
-        TextView floor = (TextView) findViewById(R.id.floor);
-        Intent intent = getIntent();
-        floor.setText(intent.getStringExtra(getString(R.string.player_id)));
+        try {
+            SteamHours.updateData(sharedPreferences.getString("player_id", "-2"));
+            System.out.println(SteamHours.getShootingHours());
+            System.out.println(SteamHours.getDrivingHours());
+            System.out.println(SteamHours.getStrategyHours());
+            System.out.println(SteamHours.getSurvivalHours());
+            System.out.println(SteamHours.getFanasyHours());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            Log.e("SteamStats", "JSON ERROR");
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            Log.e("SteamStats", "JSON ERROR");
+        }
     }
 
 
