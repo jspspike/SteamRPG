@@ -16,8 +16,6 @@
     tools:context=".MainActivity"
     android:onClick="tap">
 
-    <!--
-
     <TextView
         android:id="@+id/floor"
         android:layout_width="fill_parent"
@@ -25,31 +23,122 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#ff32405d"
-        android:text="Floor 1 - Archery Tournament"
+        android:text="Shooting Training"
         android:textSize="24dp" />
-    -->
 
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/floor"
+        android:layout_below="@+id/floor"
+        android:adjustViewBounds="true"
+        android:src="@drawable/csgo" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/background"
+        android:background="#ff393939" />
 
-
-    <ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/lobby"
+    <Button
+        android:id="@+id/attack_button"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_below="@+id/background"
+        android:layout_marginEnd="43dp"
+        android:layout_toStartOf="@+id/timer_text"
+        android:text="Attack"
+        android:onClick="attack" />
 
-        <include android:id="@+id/dungeon" layout="@layout/lobby" />
-        <include android:id="@+id/race" layout="@layout/race" />
-        <include android:id="@+id/survive" layout="@layout/survive" />
-        <include android:id="@+id/strategy" layout="@layout/strategy" />
-        <include android:id="@+id/fantasy" layout="@layout/fantasy" />
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/background"
+        android:background="@drawable/rectangle3"
+        android:gravity="center"
+        android:padding="2px"
+        android:text="12:03:55"
+        android:textSize="24dp" />
 
-    </ViewFlipper>
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/attack_button"
+        android:layout_below="@+id/background"
+        android:layout_toStartOf="@+id/timer"
+        android:gravity="center"
+        android:text="Auto \n Attack in:" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/avatarbar1"
+        android:layout_alignStart="@+id/avatarbar1"
+        android:layout_below="@+id/floor"
+        android:layout_marginTop="125dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/avatar2" />
+
+    <ImageView
+        android:id="@+id/avatarbar1"
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView3"
+        android:layout_marginLeft="50dp"
+        android:background="#ff000000" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:layout_alignBottom="@+id/avatarbar1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="50dp"
+        android:background="#ff000000" />
+
+    <ImageView
+        android:id="@+id/caravatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_alignEnd="@+id/imageView4"
+        android:layout_alignStart="@+id/imageView4"
+        android:layout_alignTop="@+id/imageView3"
+        android:adjustViewBounds="true"
+        android:src="@drawable/golbin" />
+
+    <ProgressBar
+        android:id="@+id/enemy_health"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:progress="50"
+        android:progressDrawable="@drawable/custom_progressbar"
+        android:layout_height="10dp"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/caravatar"
+        android:layout_alignStart="@+id/caravatar"
+        android:layout_alignEnd="@+id/caravatar" />
 
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/lobby"
+        android:layout_below="@+id/imageView2"
         android:fillViewport="true"
         android:layout_above="@+id/adView"
         >
@@ -251,7 +340,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="Fantasy:"
+                android:text="Puzzle:"
                 android:textSize="20dp"
                 android:layout_below="@+id/survival"
                 android:layout_alignParentStart="true" />
@@ -284,6 +373,8 @@
                 android:layout_alignParentEnd="true" />
 
 
+
+
         </RelativeLayout>
     </ScrollView>
 
@@ -296,6 +387,7 @@
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id">
     </com.google.android.gms.ads.AdView>
+
 
 </RelativeLayout>
 

@@ -5,6 +5,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="banner_ad_unit_id">ca-app-pub-4387136140393462/8986112639</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="preference_file_key">Levels</string>
+    <string name="shooting_saved">1</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="player_id">PLAYER_ID</string>
     <string name="title_activity_lobby">LobbyActivity</string>
