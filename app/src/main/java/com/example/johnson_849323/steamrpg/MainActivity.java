@@ -1,7 +1,5 @@
 package com.example.johnson_849323.steamrpg;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,7 +14,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewStub;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -81,6 +78,7 @@ public class MainActivity extends ActionBarActivity {
     int range;
     int resourceID;
     ImageView enemypic;
+    ImageView racecarimg;
     int resourceBID;
     ImageView backimg;
     DecimalFormat df = new DecimalFormat();
@@ -125,9 +123,9 @@ public class MainActivity extends ActionBarActivity {
         mDrawerList = (ListView) findViewById(R.id.navList);
 
         enemies.add(new Enemy(50, 5, "golbin", "dungeon_back", "fantasyC"));
-        //enemies.add(new Enemy(100, 8, "target", "csgo", "fantasyC"));
-        enemies.add(new Enemy(75, 8, "skellington", "dungeon_back", "fantasyC"));
-        enemies.add(new Enemy(65, 5, "chess", "board", "fantasyC"));
+        enemies.add(new Enemy(75, 2, "target", "dungeon_back", "fantasyC"));
+        enemies.add(new Enemy(50, 4, "skellington", "dungeon_back", "fantasyC"));
+        enemies.add(new Enemy(65, 3, "chess", "board", "fantasyC"));
 
         enemy = enemies.get(0);
 
@@ -145,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
         mProgress2.setMax(enemy.getHealth());
 
         int resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable", this.getPackageName());
-        ImageView enemypic = (ImageView) findViewById(R.id.avatar2);
+        ImageView enemypic = (ImageView) findViewById(R.id.caravatar);
         enemypic.setImageResource(resourceID);
 
         int resourceBID = this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName());
@@ -355,7 +353,7 @@ public class MainActivity extends ActionBarActivity {
                 mProgress2.setProgress(enemy.getHealth());
 
                 resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable", this.getPackageName());
-                enemypic = (ImageView) findViewById(R.id.avatar2);
+                enemypic = (ImageView) findViewById(R.id.caravatar);
                 enemypic.setImageResource(resourceID);
 
                 System.out.println("print statement: " + this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName()));
@@ -372,14 +370,25 @@ public class MainActivity extends ActionBarActivity {
             case 1:
                 floorType = 1;
                 vf.setDisplayedChild(1);
-                /*
-                ImageView race = (ImageView) findViewById(R.id.avatar2);
-                switch (randomWithRange(0, 1)) {
+
+                switch (randomWithRange(0, 2)) {
                     case 0:
-                        race.set
+                        resourceID = this.getResources().getIdentifier("race_car", "drawable", this.getPackageName());
+                        racecarimg = (ImageView) findViewById(R.id.racecarimg);
+                        racecarimg.setImageResource(resourceID);
+
+                    case 1:
+                        resourceID = this.getResources().getIdentifier("rocketcar", "drawable", this.getPackageName());
+                        racecarimg = (ImageView) findViewById(R.id.racecarimg);
+                        racecarimg.setImageResource(resourceID);
+
+                    case 2:
+                        resourceID = this.getResources().getIdentifier("yosh", "drawable", this.getPackageName());
+                        racecarimg = (ImageView) findViewById(R.id.racecarimg);
+                        racecarimg.setImageResource(resourceID);
 
                 }
-                */
+
 
                 TextView floorR = (TextView) findViewById(R.id.floorR);
                 floorR.setText("Floor " + floorNum + " - Race Track");
@@ -421,7 +430,7 @@ public class MainActivity extends ActionBarActivity {
                 mProgress2.setProgress(enemy.getHealth());
 
                 resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable", this.getPackageName());
-                enemypic = (ImageView) findViewById(R.id.avatar2);
+                enemypic = (ImageView) findViewById(R.id.caravatar);
                 enemypic.setImageResource(resourceID);
 
                 System.out.println("print statement: " + this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName()));
@@ -557,7 +566,7 @@ public class MainActivity extends ActionBarActivity {
         TextView eLapTime = (TextView) findViewById(R.id.enemy_time_t);
         double erange = (Math.pow(Math.E, 2 * (enemy.getXp() / 100)) + Math.pow(Math.E, 2 * (enemy.getXp() / 100))) + 1;
 
-        enemyLapT = ((60 - Math.log(1 + (enemy.getXp() / 100)) + ((Math.random() * erange) - Math.pow(Math.E, enemy.getXp() / 100))));
+        enemyLapT = ((58 - Math.log(1 + (enemy.getXp() / 100)) + ((Math.random() * erange) - Math.pow(Math.E, enemy.getXp() / 100))));
         eLapTime.setText("" + df.format(enemyLapT));
 
         if (playerLapT < enemyLapT) {
@@ -580,7 +589,7 @@ public class MainActivity extends ActionBarActivity {
         mProgress2.setMax(enemy.getHealth());
 
         int resourceID = this.getResources().getIdentifier(enemy.getSrc(), "drawable", this.getPackageName());
-        ImageView enemypic = (ImageView) findViewById(R.id.avatar2);
+        ImageView enemypic = (ImageView) findViewById(R.id.caravatar);
         enemypic.setImageResource(resourceID);
 
         int resourceBID = this.getResources().getIdentifier(enemy.getBack(), "drawable", this.getPackageName());

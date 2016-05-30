@@ -109,7 +109,7 @@
         android:background="#ff000000" />
 
     <ImageView
-        android:id="@+id/avatar2"
+        android:id="@+id/caravatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView3"
@@ -130,9 +130,9 @@
         android:progressDrawable="@drawable/custom_progressbar"
         android:layout_height="10dp"
         android:layout_width="match_parent"
-        android:layout_above="@+id/avatar2"
-        android:layout_alignStart="@+id/avatar2"
-        android:layout_alignEnd="@+id/avatar2" />
+        android:layout_above="@+id/caravatar"
+        android:layout_alignStart="@+id/caravatar"
+        android:layout_alignEnd="@+id/caravatar" />
 
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
